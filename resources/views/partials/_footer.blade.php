@@ -1,47 +1,45 @@
-    <footer>
-		<div class="wrap-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-footer footer-1">
-						<div class="footer-heading"><h1><span style="color: #fff;">NEWSPAPER</span></h1></div>
-						<div class="content">
-							<p>Never missed any post published in our site. Subscribe to our daily newsletter now.</p>
-							<strong>Email address:</strong>
-							<form action="#" method="post">
-								<input type="text" name="your-name" value="" size="40" placeholder="Your Email" />
-								<input type="submit" value="SUBSCRIBE" class="btn btn-3" />
-							</form>
-						</div>
-					</div>
-					<div class="col-md-4 col-footer footer-2">
-						<div class="footer-heading"><h4>Categories</h4></div>
-						<div class="content">
-							<a href="/basketball">Basketball</a>
-							<a href="/football">Football</a>
-							<a href="/volleyball">Volleyball</a>
-							<a href="/rugby">Rugby</a>
-							<a href="/handball">Handball</a>
-							<a href="/swimming">Swimming</a>
-							<a href="/cricket">Cricket</a>
-							<a href="/cycling">Cycling</a>
-							<a href="/athletic">Athletism</a>
-							<a href="{{ route('journalist.login') }}" target="_blank">Journalist</a>
-						</div>
-					</div>
-					<div class="col-md-4 col-footer footer-3">
-						<div class="footer-heading"><center><h4>Inkuru Zigezweho</h4></center></div>
-						<div class="content">
-							<ul>
-							@foreach($titles as $title)
-								<li><a href="{{ url($title->slug) }}">{{ ucfirst($title->title) }}</a></li>
-							@endforeach
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copy-right">
-			<p>Copyright 2018 <a href="/" rel="nofollow">Imikino.net</a>All Rights Reserved. Developed by <a href="https://www.facebook.com/spartacus.amphoteric" target="_blank" rel="nofollow">Eng. Igor Jean-Luc NDIRAMIYE</a></p>
-		</div>
-	</footer>
+<!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-4 agileinfo_footer_grid">
+                <h3>About Us</h3>
+                <p style="text-align:justify">You have landed in the right place, MPD (Music for Peace and Development) is an answer to everything you wanted for entertainmnet in Rwanda and abroad through peaceful music especially Reggae music.</p>
+                <div class="agileits_footer_grid_gallery">
+                @foreach($footers as $footer)
+                    <div class="agileits_footer_grid_gallery1">
+                        <a href="#" data-toggle="modal" data-target="#myModal"><img src="{{asset('images/'. $footer->other_images) }}" alt=" " class="img-responsive" /></a>
+                    </div>
+                @endforeach
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="col-md-4 agileinfo_footer_grid">
+                <h3>Facebook Posts</h3>
+                <ul class="w3agile_footer_grid_list">
+                    <li>Ut aut reiciendis voluptatibus maiores <a href="#">http://symphony@example.com</a> alias, ut aut reiciendis.
+                        <span><i class="fa fa-twitter" aria-hidden="true"></i>02 days ago</span></li>
+                    <li>Itaque earum rerum hic tenetur a sapiente delectus <a href="#">http://symphony@example1.com</a> ut aut voluptatibus.
+                        <span><i class="fa fa-twitter" aria-hidden="true"></i>03 days ago</span></li>
+                </ul>
+            </div>
+            <div class="col-md-4 agileinfo_footer_grid">
+                <h3>Social Media</h3>
+                <ul class="agileinfo_social_icons">
+                    <li><a href="#" class="facebook affix-bottom.bs.affix"><span class="fa fa-facebook" aria-hidden="true"></span><i>-</i>Facebook</a></li>
+                    <li><a href="#" class="twitter"><span class="fa fa-twitter" aria-hidden="true"></span><i>-</i>Twitter</a></li>
+                    <li><a href="#" class="google"><span class="fa fa-google-plus" aria-hidden="true"></span><i>-</i>Google+</a></li>
+                    <li><a href="#" class="instagram"><span class="fa fa-instagram" aria-hidden="true"></span><i>-</i>Instagram</a></li>
+                    <li><a href="{{ route('login') }}" class="user"><span class="fa fa-user" aria-hidden="true"></span><i>-</i>Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+    <!-- copy-right -->
+    <div class="w3agile_copy_right">
+        <div class="container">
+            <p>© 2018 2Tmpd.com All Rights Reserved</a>
+            </p>
+        </div>
+    </div>
+    <!-- //copy-right -->

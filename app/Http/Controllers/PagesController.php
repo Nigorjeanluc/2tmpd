@@ -3,220 +3,76 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Contact;
-use App\Post;
-use App\Location;
-use App\Sport;
-use App\Tag;
+use App\Video;
+use App\Gallerie;
+use App\Album;
+use App\Event;
+use App\Message;
 use Mail;
 use DB;
 use Purifier;
 
 class PagesController extends Controller
 {
-    public function getTags($id)
-    {
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $tag = Tag::find($id);
-        //$tags = $tag->posts()->paginate(5);
-        return view('pages.tag')->withTag($tag)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-    
-    public function getFooter(){
-        $footer = DB::select('select title from posts order by id desc limit 5');
-        return view('partials._footer')->withFooters($footer);
-    }
-
     public function getIndex(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $tags = DB::select('select * from tags order by id desc limit 0,40');
-        $first = DB::select('select * from posts order by id desc limit 0,1');
-        $other = DB::select('select * from posts order by id desc limit 1,4');
-        $list = DB::select('select * from posts order by id desc limit 0,20');
-        $imgs1 = DB::select('select image,slug from posts order by id desc limit 0,2');
-        $imgs2 = DB::select('select image,slug from posts order by id desc limit 2,2');
-        $imgs3 = DB::select('select image,slug from posts order by id desc limit 4,2');
-        $imgs4 = DB::select('select image,slug from posts order by id desc limit 6,2');
-        $imgs5 = DB::select('select image,slug from posts order by id desc limit 8,2');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        //$posts = Post::orderBy('created_at', 'desc')->limit(5)->get();
-        return view('pages.home')->withOthers($other)->withFirsts($first)->withLists($list)->withImgs1($imgs1)->withImgs2($imgs2)->withImgs3($imgs3)->withImgs4($imgs4)->withImgs5($imgs5)->withAsides($aside)->withTags($tags)->withTitles($titles);
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        $event = DB::table('events')->orderBy('id', 'desc')->limit(3)->get();
+        $first = DB::select('select * from events order by id desc limit 0,1');
+        $other = DB::select('select * from events order by id desc limit 1,2');
+        $events = DB::table('events')->orderBy('id', 'desc')->limit(1)->get();
+        $video = DB::table('videos')->orderBy('id', 'desc')->limit(3)->get();
+        $album = DB::table('albums')->orderBy('id', 'desc')->limit(3)->get();
+        return view('pages.index')->withEvents($event)->withFirsts($first)->withOthers($other)->withVideos($video)->withAlbums($album)->withEventss($events)->withFooters($footer);
     }
 
-    public function getRwanda(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 2)->paginate(5);
-        return view('pages.rwanda')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
+    public function getBio(){
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        $events = DB::table('events')->orderBy('id', 'desc')->limit(1)->get();
+        return view('pages.biography')->withFooters($footer)->withEventss($events);
     }
 
-    public function getAfrica(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 3)->paginate(5);
-        return view('pages.africa')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
+    
+    public function getDisco(){
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        $album = DB::table('albums')->orderBy('id', 'desc')->limit(2)->get();
+        $event = DB::table('events')->orderBy('id', 'desc')->limit(3)->get();
+        return view('pages.discography')->withAlbums($album)->withEvents($event)->withFooters($footer);
     }
 
-    public function getEngland(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 4)->paginate(5);
-        return view('pages.england')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
+    public function getGallery(){
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        $first = DB::table('galleries')->where('scale', '=', 'portrait')->orderBy('id', 'desc')->take(1)->get();
+        $other = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->take(1)->get();
+        $and = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->skip(1)->take(1)->get();
+
+        $first1 = DB::table('galleries')->where('scale', '=', 'portrait')->orderBy('id', 'desc')->skip(1)->take(1)->get();
+        $other1 = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->skip(2)->take(1)->get();
+        $and1 = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->skip(3)->take(1)->get();
+
+        $first2 = DB::table('galleries')->where('scale', '=', 'portrait')->orderBy('id', 'desc')->skip(2)->take(1)->get();
+        $other2 = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->skip(4)->take(1)->get();
+        $and2 = DB::table('galleries')->where('scale', '=', 'landscape')->orderBy('id', 'desc')->skip(5)->take(1)->get();
+        return view('pages.gallery')->withFirsts($first)->withOthers($other)->withAnds($and)->withFirsts1($first1)->withOthers1($other1)->withAnds1($and1)->withFirsts2($first2)->withOthers2($other2)->withAnds2($and2)->withFooters($footer);
     }
 
-    public function getSpain(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 6)->paginate(5);
-        return view('pages.spain')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
+    public function getContactUs(){
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        return view('pages.contact_us')->withFooters($footer);
     }
 
-    public function getFrance(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 5)->paginate(5);
-        return view('pages.france')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getItaly(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 7)->paginate(5);
-        return view('pages.italy')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getGermany(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 8)->paginate(5);
-        return view('pages.germany')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getAmerica(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 9)->paginate(5);
-        return view('pages.america')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getAsia(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 10)->paginate(5);
-        return view('pages.asia')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getOther(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('location_id', '=', 11)->paginate(5);
-        return view('pages.other')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getBasketball(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 3)->paginate(5);
-        return view('pages.basketball')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getFootball(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 1)->paginate(5);
-        return view('pages.football')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getVolleyball(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 2)->paginate(5);
-        return view('pages.volleyball')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getRugby(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 4)->paginate(5);
-        return view('pages.rugby')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getHandball(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 5)->paginate(5);
-        return view('pages.handball')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getSwimming(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 6)->paginate(5);
-        return view('pages.swimming')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getCricket(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 7)->paginate(5);
-        return view('pages.cricket')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getCycling(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 8)->paginate(5);
-        return view('pages.cycling')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getAthletic(){
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        $aside = DB::table('posts')->where('views', '>=', 1000)->orderBy('views', 'desc')->limit(3)->get();
-        $newone = DB::table('posts')->orderBy('created_at', 'desc')->limit(3)->get();
-        $posts = Post::where('sport_id', '=', 9)->paginate(5);
-        return view('pages.athletic')->withPosts($posts)->withAsides($aside)->withNewones($newone)->withTitles($titles);
-    }
-
-    public function getContact() {
-        $titles= DB::select('select * from posts order by id desc limit 5');
-        return view('pages.contact')->withTitles($titles);
-    }
-
-    public function postContact(Request $request) {
+    public function postContactUs(Request $request) {
         $this->validate($request, [
             'name' => 'required|min:4',
             'email' => 'required|email',
-            'phone' => 'required|digits_between:10,20',
+            'phone' => 'required|numeric',
             'message' => 'min:10'
         ]);
 
-        $contact = New Contact;
+        $contact = New Message;
         
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-        $contact->counter = '1';
-        $contact->readed = '1';
         $contact->message = Purifier::clean($request->message);
 
         $contact->save();
@@ -227,8 +83,14 @@ class PagesController extends Controller
             $message->subject($data['subject']);
         });*/
 
-        $request->session()->flash('success', 'Ikifuzo cyawe cyakiriwe. Murakoze');
+        $request->session()->flash('success', 'Message sent');
 
-        return redirect()->route('contact');
+        return redirect()->route('contactUs');
+    }
+
+    public function getSingle($id) {
+        $pos = Event::find($id);
+        $footer = DB::select('select other_images from events order by id desc limit 5');
+        return view('pages.single')->withPos($pos)->withFooters($footer);
     }
 }

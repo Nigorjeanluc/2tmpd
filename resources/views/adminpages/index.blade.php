@@ -1,93 +1,81 @@
-  @extends('home')
+@extends('layouts.dashboard2')
 
-  @section('title', 'Dashboard')
-  
-  @section('content')
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
+@section('title', 'Admin Control')
+
+@section('pageview')
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Admin Dashboard
+        <small>All controls</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
       </ol>
-    </section>
+@endsection
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>{{ $posts->count() }}</h3>
+@section('content')
+<div class="row">
+    <div class="col-md-6">
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+            <h3 class="box-title">Title</h3>
 
-              <p>All Posts</p>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
             </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="{{ route('posts.index') }}" class="small-box-footer">More <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+            <div class="box-body">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                You are logged in as <strong>ADMIN</strong>!
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+            Footer
+            </div>
+            <!-- /.box-footer-->
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px"></sup></h3>
+        <!-- /.box -->
+    </div>
 
-              <p>Journalists</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
+    <div class="col-md-6">
+        <!-- Default box -->
+        <div class="box">
+                <div class="box-header with-border">
+                <h3 class="box-title">Title</h3>
 
-              <p>Contact Messages</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-chatbox-working"></i>
-            </div>
-            <a href="{{ route('messages.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>{{ $comments->count() }}</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
+                </div>
+                <div class="box-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-              <p>Comments</p>
+                    You are logged in as <strong>ADMIN</strong>!
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                Footer
+                </div>
+                <!-- /.box-footer-->
             </div>
-            <div class="icon">
-              <i class="ion ion-chatbubble-working"></i>
-            </div>
-            <a href="{{ route('comments.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-      </div>
-      <!-- /.row (main row) -->
-
-    </section>
-    <!-- /.content -->
-  </div>
-  @endsection
+            <!-- /.box -->
+    </div>
+</div>
+@endsection
