@@ -24,11 +24,11 @@
         <div class="container">
             <div class="grid_3 grid_5 agile">
                 <div style="font-family: cursive; font-size:1.2em;text-align: justify" class="well">
-                    <b>Title :</b>{{ $pos->title }}<br /><br />
+                    <p align="center"><b>Title :</b>{{ $pos->title }}</p><br /><br />
                     {{ $pos->created_at }}<br /><br />
-                    <img style="float:left;width:350px;margin-right: 10px" src="{{asset('images/'. $pos->other_images) }}" />
-                    {{ substr(strip_tags($pos->content), 0, 50) }}{{ strlen($pos->content) > 50 ? "..." : "" }}
-                    <img style="float:center" src="{{asset('images/'. $pos->header_images) }}" />
+                    <p align="center"><img src="{{asset('images/'. $pos->other_images) }}" /></p>
+                    <p style="text-align:justify">{!! $pos->content!!}</p>
+                    <p align="center"><img src="{{asset('images/'. $pos->header_images) }}" /></p>
                 </div>
             </div>
         </div>
