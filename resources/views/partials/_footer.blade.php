@@ -30,7 +30,7 @@
                     <li><a href="https://www.instagram.com/2t_rwanda_reggae_artist/" target="_blank" class="facebook affix-bottom.bs.affix"><span class="fa fa-facebook" aria-hidden="true"></span><i>-</i>Facebook</a></li>
                     <li><a href="https://twitter.com/hashtag/2TMpd?src=hash" target="_blank" class="twitter"><span class="fa fa-twitter" aria-hidden="true"></span><i>-</i>Twitter</a></li>
                     <li><a href="https://plus.google.com/109224344837446966462" target="_blank" class="google"><span class="fa fa-google-plus" aria-hidden="true"></span><i>-</i>Google+</a></li>
-                    <li><a href="#" target="_blank" class="instagram"><span class="fa fa-instagram" aria-hidden="true"></span><i>-</i>Instagram</a></li>
+                    <li><a href="https://www.instagram.com/2t_rwanda_reggae_artist/" target="_blank" class="instagram"><span class="fa fa-instagram" aria-hidden="true"></span><i>-</i>Instagram</a></li>
                     <li><a href="{{ route('login') }}" target="_blank" class="user"><span class="fa fa-user" aria-hidden="true"></span><i>-</i>Admin</a></li>
                 </ul>
             </div>
