@@ -26,26 +26,37 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-lightbulb-o"></i>
-                <span>New actions</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+            <li class="treeview {{ Request::is('albums') ? "active" : "" || Request::is('albums/create') ? "active" : "" }}">
+              <a href="{{ route('albums.create') }}">
+                <i class="fa fa-sliders"></i> <span>New album</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="{{ route('albums.create') }}"><i class="fa fa-sliders"></i>New albums</a></li>
-                <li><a href="{{ route('events.create') }}"><i class="fa fa-file-o"></i>New events</a></li>
-                <li><a href="{{ route('videos.create') }}"><i class="fa fa-film"></i>New Videos</a></li>
-              </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::is('events') ? "active" : "" || Request::is('events/create') ? "active" : "" }}">
+              <a href="{{ route('events.create') }}">
+                <i class="fa fa-file-o"></i> <span>New event</span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('videos') ? "active" : "" || Request::is('videos/create') ? "active" : "" }}">
+              <a href="{{ route('videos.create') }}">
+                <i class="fa fa-film"></i> <span>New video</span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('songs') ? "active" : "" || Request::is('songs/create') ? "active" : "" }}">
+              <a href="{{ route('songs.create') }}">
+                <i class="fa fa-music"></i> <span>New song</span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('upcoming') ? "active" : "" || Request::is('upcoming/create') ? "active" : "" }}">
+              <a href="{{ route('upcoming.create') }}">
+                <i class="fa fa-thumb-tack"></i> <span>New upcoming event</span>
+              </a>
+            </li>
+            <li class="treeview {{ Request::is('imgs') ? "active" : "" || Request::is('imgs/create') ? "active" : "" }}">
               <a href="{{ route('imgs.create') }}">
-                <i class="fa fa-area-chart"></i> <span>Gallery</span>
+                <i class="fa fa-photo"></i> <span>Gallery</span>
               </a>
             </li>
-            <li class="treeview">
+            <li class="treeview {{ Request::is('messages') ? "active" : "" ||  Request::is('msg/1') ? "active" : "" }}">
               <a href="{{ route('messages') }}">
                 <i class="fa fa-bar-chart"></i>
                 <span>New messages</span>

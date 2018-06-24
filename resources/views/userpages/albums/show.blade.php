@@ -34,10 +34,10 @@
           <!-- /.box-header -->
           <div class="box-body">
             <h3 class="text-center">{{ $post->name }}</h3>
-            <img class="img-responsive pad" src="{{asset('images/'. $post->cover) }}" alt="No Picture Available">
+            <div align="center"><img class="img-responsive pad" src="{{asset('images/'. $post->cover) }}" alt="No Picture Available"></div>
 
             <p>{!! $post->content !!}</p>
-            <span class="description">Posted on - {{ date('M j, Y h:i A', strtotime($post->created_at)) }}</span>
+            <div style="text-align: center;font-size:1.2em"><div style="text-align: center;font-size:1.2em"><span class="description">Posted on - {{ date('M j, Y h:i A', strtotime($post->created_at)) }}</span></div></div>
             <!--<button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
             <span class="pull-right text-muted">127 likes - 3 comments</span>-->

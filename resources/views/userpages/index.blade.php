@@ -8,9 +8,7 @@
         <small>All controls</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
 @endsection
 
@@ -62,6 +60,42 @@
 
           <div class="info-box-content">
             <span class="info-box-number">Gallery</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <a href="{{ route('videos.index') }}"><span class="info-box-icon bg-purple"><i class="fa fa-film"></i></span></a>
+
+          <div class="info-box-content">
+            <span class="info-box-number">All Videos</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <a href="{{ route('songs.index') }}"><span class="info-box-icon bg-teal"><i class="fa fa-music"></i></span></a>
+
+          <div class="info-box-content">
+            <span class="info-box-number">All Songs</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <a href="{{ route('upcoming.index') }}"><span class="info-box-icon bg-gray"><i class="fa fa-thumb-tack"></i></span></a>
+
+          <div class="info-box-content">
+            <span class="info-box-number">Upcoming events</span>
           </div>
           <!-- /.info-box-content -->
         </div>

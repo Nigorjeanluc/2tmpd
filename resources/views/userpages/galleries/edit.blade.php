@@ -26,9 +26,7 @@
         <small>Edit event</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
 @endsection
 
@@ -71,8 +69,7 @@
                   <div class="form-group col-md-6">
                       {{ Form::label('img_format', 'Portrait/Landscape:') }}
                       <select class="form-control" name="img_format">
-                        <option value="portrait">Portrait</option>
-                        <option value="landscape">Landscape</option>
+                        <option value="portrait">{{$post->scale}}</option>
                       </select>
                   </div>
                   <div class="form-group col-md-6">
@@ -86,7 +83,7 @@
                   {{ Form::textarea('detail', null,['class' => 'form-control','rows' => '10'/*, 'required' => ''*/]) }}
                 </div>
 
-                {{ Form::submit('Edit gallry Post', ['class' => 'btn btn-success btn-lg btn-block'])}}
+                {{ Form::submit('Edit the image', ['class' => 'btn btn-success btn-lg btn-block'])}}
 
                 {!! Form::close() !!}
                 </div>

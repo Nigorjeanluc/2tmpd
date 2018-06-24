@@ -1,4 +1,9 @@
 @extends('layouts.welcome')
+
+@section('titleone','Biography')
+
+@section('titletwo','2Tmpd')
+
 @section('content')
 
 <!-- banner-bottom -->
@@ -8,7 +13,7 @@
         <div class="container">
             <div class="w3l_breadcrumbs_left">
                 <ul>
-                    <li><a href="index.html">Home</a><i>/</i></li>
+                    <li><a href="{{ route('first') }}">Home</a><i>/</i></li>
                     <li>Biography</li>
                 </ul>
             </div>
@@ -22,6 +27,7 @@
     <!-- icons -->
     <div class="latest-albums">
         <div class="container">
+            <h3 class="agileits_w3layouts_head"><span>2T’s Biography</span></h3>
             <div class="grid_3 grid_5 agile">
                 <div style="font-family: cursive; font-size:1.2em;text-align: justify" class="well">
                     <img style="float:left;width:350px;margin-right: 10px" src="images/22.jpg" /> 2T was born on 1st August,1984 in Rwanda; being born in a family of singers( father, mother and siblings) 2T got a chance to practice and perform almost

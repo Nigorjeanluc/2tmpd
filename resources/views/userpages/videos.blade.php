@@ -26,9 +26,7 @@
         <small>Add videos</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
 @endsection
 
@@ -68,7 +66,7 @@
                     </div>
 
                     <div class="form-group">
-                      {{ Form::label('youtube_link', 'Youtube link of the song') }}
+                      {{ Form::label('youtube_link', 'Youtube link of the song and replace ( width="..." height="...") with (class="embed-responsive-item")') }}
                       {{ Form::text('youtube_link',null,['class' => 'form-control', /*'required' => ''*/'data-parsley-required' => 'true']) }}
                     </div>
     

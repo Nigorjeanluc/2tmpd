@@ -34,10 +34,16 @@
           <!-- /.box-header -->
           <div class="box-body">
             <h3 class="text-center">{{ $post->title }}</h3>
-            <img class="img-responsive pad" src="{{asset('images/'. $post->img) }}" alt="No Picture Available">
-
-            <p>{!! $post->youtube_link !!}</p>
-            <span class="description">Posted on - {{ date('M j, Y h:i A', strtotime($post->created_at)) }}</span>
+                <div class="col-md-12 embed-responsive embed-responsive-16by9">
+                    {!! $post->youtube_link !!}
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4 col-md-offset-4">
+                        <h3 class="text-center">Cover picture</h3>
+                        <img class="img-responsive pad" src="{{asset('images/'. $post->img) }}" alt="No Picture Available">
+                    </div>
+                </div>
+            <div style="text-align: center;font-size:1.2em"><span class="description">Posted on - {{ date('M j, Y h:i A', strtotime($post->created_at)) }}</span></div>
             <!--<button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
             <span class="pull-right text-muted">127 likes - 3 comments</span>-->

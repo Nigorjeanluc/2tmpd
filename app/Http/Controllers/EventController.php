@@ -148,7 +148,7 @@ class EventController extends Controller
             $image = $request->file('header_images');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename);
-            Image::make($image)->resize(1366, 768)->save($location);
+            Image::make($image)->resize(480, 640)->save($location);
             //$image->move($location, $filename);
             $oldFilename = $event->header_images;
             // update the database
@@ -162,7 +162,7 @@ class EventController extends Controller
             $image = $request->file('other_images');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename);
-            Image::make($image)->resize(1366, 768)->save($location);
+            Image::make($image)->resize(640, 427)->save($location);
             //$image->move($location, $filename);
             $oldFilename = $event->other_images;
             // update the database

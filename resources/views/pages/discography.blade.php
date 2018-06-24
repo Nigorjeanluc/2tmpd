@@ -1,5 +1,9 @@
 @extends('layouts.welcome')
 
+@section('titleone','Discography')
+
+@section('titletwo','2Tmpd')
+
 @section('content')
 <!-- banner-bottom -->
 <div class="banner-bottom">
@@ -8,7 +12,7 @@
         <div class="container">
             <div class="w3l_breadcrumbs_left">
                 <ul>
-                    <li><a href="index.html">Home</a><i>/</i></li>
+                    <li><a href="{{ route('first') }}">Home</a><i>/</i></li>
                     <li>Discography</li>
                 </ul>
             </div>
@@ -29,17 +33,18 @@
                         @foreach($albums as $album)
                         <div class="cntl-state">
                             <div class="cntl-content">
-                                <h4>{{ date('d M Y', strtotime($album->updated_at)) }}</h4>
-                                <p>{{ ucfirst($album->name) }}</p>
+                                <h3 style="font-family: Colonna MT;font-size:1.6em;font-weight:bolder">Name of the album: {{ ucfirst($album->name) }}</h3>
+                                <h4>Released year: {{ date('Y', strtotime($album->updated_at)) }}</h4>
+                                <h4>Songs: </h4><br/>
                                 <p>{!!$album->content!!}</p>
                             </div>
                             <div class="cntl-image">
                                 <img src="{{asset('images/'. $album->cover) }}" alt=" " class="img-responsive" />
                                 <div class="w3ls_cntl_image_pos">
-                                    <p>{{ ucfirst($album->name) }}</p>
+                                    <p style="font-family: Colonna MT;font-weight:800;font-size:1.9em">{{ ucfirst($album->name) }}</p>
                                 </div>
                             </div>
-                            <div class="cntl-icon cntl-center">01</div>
+                            <div class="cntl-icon cntl-center"><i class="fa fa-exchange"></i></div>
                         </div>
                         @endforeach
                     </div>
@@ -75,10 +80,10 @@
                         <!--<li><a href="#"><i class="fa fa-comments-o"></i>5 Comments</a></li>
                         <li><a href="#"><i class="fa fa-eye"></i>99 Views</a></li>-->
                     </ul>
-                    <h4><a href="#" data-toggle="modal" data-target="#myModal">{{ ucfirst($event->title) }}</a></h4>
+                    <h4><a href="{{ url('/'.$event->id) }}">{{ ucfirst($event->title) }}</a></h4>
                     <p>{{ ucfirst(substr(strip_tags($event->content), 0, 150)) }}{{ ucfirst(strlen($event->content) > 150 ? "..." : "") }}</p>
                     <div class="w3_more">
-                        <a href="#" data-toggle="modal" data-target="#myModal">Learn More</a>
+                        <a href="{{ url('/'.$event->id) }}">Learn More</a>
                     </div>
                 </div>
             @endforeach

@@ -43,7 +43,6 @@
                   <tr>
                     <th style="width: 10px">#</th>
                     <th>Title</th>
-                    <th>YouTube</th>
                     <th style="width: 150px">Created at</th>
                     <th></th>
                   </tr>
@@ -51,7 +50,6 @@
                     <tr>
                       <th>{{ $post->id }}</th>
                       <td><b>{{ substr($post->title, 0, 30) }}{{ strlen($post->title) > 30 ? "..." : "" }}</b></td>
-                      <td>{{ substr(strip_tags($post->youtube_link), 0, 50) }}{{ strlen($post->youtube_link) > 50 ? "..." : "" }}</td>
                       <td>{{ $post->created_at }}</td>
                       <td>
                         <a style="color:#fff" href="{{ route('videos.show', $post->id) }}" class="btn btn-info btn-flat btn-sm">View</a> <a style="color:#fff" href="{{ route('videos.edit', $post->id )}}" class="btn btn-success btn-flat btn-sm">Edit</a>

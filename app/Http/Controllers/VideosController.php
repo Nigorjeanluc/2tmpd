@@ -130,7 +130,7 @@ class VideosController extends Controller
             $image = $request->file('img');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename);
-            Image::make($image)->resize(1366, 768)->save($location);
+            Image::make($image)->resize(640, 427)->save($location);
             //$image->move($location, $filename);
             $oldFilename = $video->img;
             // update the database

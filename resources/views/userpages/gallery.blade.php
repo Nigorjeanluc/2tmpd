@@ -26,9 +26,7 @@
         <small>Add images</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
 @endsection
 
@@ -86,7 +84,7 @@
                       {{ Form::textarea('detail', null,['class' => 'form-control','rows' => '10'/*, 'required' => ''*/]) }}
                     </div>
     
-                    {{ Form::submit('Create an Event Post', ['class' => 'btn btn-success btn-lg btn-block'])}}
+                    {{ Form::submit('Add the Image', ['class' => 'btn btn-success btn-lg btn-block'])}}
     
                   {!! Form::close() !!}
                 </div>

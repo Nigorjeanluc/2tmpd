@@ -1,4 +1,9 @@
 @extends('layouts.welcome')
+
+@section('titleone','Contact us')
+
+@section('titletwo','2Tmpd')
+
 @section('content')
 
 <!-- breadcrumbs -->
@@ -6,7 +11,7 @@
         <div class="container">
             <div class="w3l_breadcrumbs_left">
                 <ul>
-                    <li><a href="index.html">Home</a><i>/</i></li>
+                    <li><a href="{{ route('first') }}">Home</a><i>/</i></li>
                     <li>Contact Us</li>
                 </ul>
             </div>

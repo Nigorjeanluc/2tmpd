@@ -128,7 +128,7 @@ class AlbumController extends Controller
             $image = $request->file('cover');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename);
-            Image::make($image)->resize(1366, 768)->save($location);
+            Image::make($image)->resize(400, 400)->save($location);
             //$image->move($location, $filename);
             $oldFilename = $album->cover;
             // update the database

@@ -26,6 +26,8 @@ Route::resource('/events', 'EventController');
 Route::resource('/imgs', 'GalleryController');
 Route::resource('/videos', 'VideosController');
 Route::resource('/msg', 'MessageController');
+Route::resource('/upcoming', 'UpcomingController');
+Route::resource('/songs', 'SongController');
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -36,11 +38,14 @@ Route::prefix('admin')->group(function() {
 Route::get('/', 'PagesController@getIndex')->name('first');
 Route::get('/biography', 'PagesController@getBio')->name('biography');
 Route::get('/discography', 'PagesController@getDisco')->name('discography');
+Route::get('/charity', 'PagesController@getCharity')->name('charity');
 Route::get('/gallery', 'PagesController@getGallery')->name('gallery');
 Route::get('/footer', 'PagesController@getFooter')->name('Footer');
 Route::get('/contact_us', 'PagesController@getContactUs')->name('contactUs');
 Route::post('/contact_us', 'PagesController@postContactUs');
 Route::get('{id}', ['as' => 'single', 'uses' => 'PagesController@getSingle']);
+Route::get('/video/{id}', ['as' => 'video', 'uses' => 'PagesController@getVideo']);
+Route::get('/song/{id}', ['as' => 'song', 'uses' => 'PagesController@getSong']);
 
 /*
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

@@ -23,12 +23,10 @@
 @section('pageview')
       <h1>
         Dashboard
-        <small>Edit event</small>
+        <small>Edit this video</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
       </ol>
 @endsection
 
@@ -63,12 +61,12 @@
                 {!! Form::model($post, ['route' => ['videos.update', $post->id], 'method' => 'PUT', 'files' => true]) !!}
                     <!-- text input -->
                     <div class="form-group">
-                    {{ Form::label('title', 'Title of the song') }}
+                    {{ Form::label('title', 'Title of the video') }}
                     {{ Form::text('title',null,['class' => 'form-control', /*'required' => ''*/'data-parsley-required' => 'true']) }}
                     </div>
 
                     <div class="form-group">
-                    {{ Form::label('youtube_link', 'Youtube link of the song') }}
+                    {{ Form::label('youtube_link', 'Youtube link of the video') }}
                     {{ Form::text('youtube_link',null,['class' => 'form-control', /*'required' => ''*/'data-parsley-required' => 'true']) }}
                     </div>
 

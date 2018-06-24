@@ -139,7 +139,7 @@ class GalleryController extends Controller
         ));
 
         $gallery->title = $request->title;
-        //save our image
+        $gallery->scale = $request->img_format;
         //save our image
         if ($request->hasFile('img')) {
             if($request->img_format == 'portrait'){
@@ -171,6 +171,8 @@ class GalleryController extends Controller
             }
             
         }
+        
+        $gallery->detail = Purifier::clean($request->detail);
 
         $gallery->save();
         
