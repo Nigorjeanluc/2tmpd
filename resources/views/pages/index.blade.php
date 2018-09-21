@@ -103,9 +103,7 @@
                     <div class="panel-body">
                         @foreach($albums as $album)
                         <div class="row col-md-12">
-                            <a class="pull-left" href="#">
-                                <img style="width:100%;height:100%;position:relative" class="media-object" src="{{asset('images/'. $album->cover) }}" alt="...">
-                            </a>
+                            <center><a href="/discography"><img style="width:100%;height:100%;position:relative" class="img-responsive" src="{{asset('images/'. $album->cover) }}" alt="..."></a></center>
                         </div>
                         @endforeach
                     </div>
@@ -157,7 +155,7 @@
             </div>
             <div class="col-md-6 w3_agile_about_grid_right">
                 <h3>Welcome to 2Tmpd.com</h3>
-                <p style="font-size:1.2em;text-align:justify"><span>You have landed in the right place, MPD (Music for Peace and Development) is an answer to everything you wanted for entertainmnet in Rwanda and abroad through peaceful music especially Reggae music.</span></p>
+                <p style="font-size:1.2em;text-align:justify"><span>You have landed in the right place, MPD (Music for Peace and Development) is an answer to everything you wanted for entertainment in Rwanda and abroad through peaceful music especially Reggae music.</span></p>
                 <p style="font-size:1.2em;text-align:justify"><span>Positivity, freedom, peace, love, respect and development are keys to everything we engage in.</span></p>
                 <p style="font-size:1.2em;text-align:justify"><span>Are you positive? Please, welcome to partner with us.</span></p>
                 <p style="font-size:1.2em;text-align:justify"><span>Are you negative? Please, stay away.</span></p>
